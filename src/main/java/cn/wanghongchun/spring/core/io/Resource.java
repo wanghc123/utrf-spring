@@ -8,7 +8,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 public interface Resource extends InputStreamSource{
-    boolean exists();
+/*    boolean exists();
 
     default boolean isReadable() {
         return true;
@@ -41,5 +41,5 @@ public interface Resource extends InputStreamSource{
     //@Nullable
     String getFilename();
 
-    String getDescription();
+    String getDescription();*/
 }

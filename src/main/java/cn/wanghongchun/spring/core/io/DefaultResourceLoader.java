@@ -1,5 +1,7 @@
 package cn.wanghongchun.spring.core.io;
 
+import cn.wanghongchun.spring.util.ClassUtils;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
@@ -32,9 +34,9 @@ public class DefaultResourceLoader implements ResourceLoader {
                 }
 
                 try {
-                    URL url = new URL(location);
-                    return (Resource)(ResourceUtils.isFileURL(url) ? new FileUrlResource(url) : new UrlResource(url));
-                } catch (MalformedURLException var5) {
+                  /*  URL url = new URL(location);后续补充url方法
+                    return (Resource)(ResourceUtils.isFileURL(url) ? new FileUrlResource(url) : new UrlResource(url))*/;
+                } catch (Exception var5) {
                     return this.getResourceByPath(location);
                 }
             }
@@ -44,5 +46,14 @@ public class DefaultResourceLoader implements ResourceLoader {
         } while(resource == null);
 
         return resource;
+    }
+    protected Resource getResourceByPath(String path) {
+        return new DefaultResourceLoader.ClassPathContextResource(path, this.getClassLoader());
+    }
+
+    protected static class ClassPathContextResource extends ClassPathResource{
+        public ClassPathContextResource(String path, ClassLoader classLoader) {
+            super(path, classLoader);
+        }
     }
 }
