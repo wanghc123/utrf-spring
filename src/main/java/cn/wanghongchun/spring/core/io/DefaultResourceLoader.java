@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
+//基础的加载类
 public class DefaultResourceLoader implements ResourceLoader {
     private ClassLoader classLoader;
     private final Set<ProtocolResolver> protocolResolvers = new LinkedHashSet(4);
